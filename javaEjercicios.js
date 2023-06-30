@@ -1,18 +1,17 @@
 function guessWhich() {
-const min = 1;
-const max = 10; 
+    const min = 2;
+    const max = 3;
+  
+    let randomNumber = Math.floor(Math.random(3) * (min)) - max;
 
-let randomNumber = Math.floor((Math.random(5) + min) -10);
+    let question = prompt("DinDong DinDong What number am I?");
 
-let question = prompt("DinDong DinDong What number am I?");
-
-while (question !== randomNumber) {
-    console.log("Wrong! try again");
-    prompt("DinDong DinDong What number am I?");
-} 
-
-console.log("Yess! U won!")
-    }
+    if (question !== randomNumber) {
+        console.log("Wrong! try again");
+        question = prompt("A last chance");
+    } else {
+        console.log("Yess! U won! the right number is" + randomNumber);
+    } }
 
 guessWhich();
 

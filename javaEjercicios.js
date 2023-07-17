@@ -1,19 +1,19 @@
-function guessWhich() {
-    const min = 2;
-    const max = 3;
-  
-    let randomNumber = Math.floor(Math.random(3) * (min)) - max;
+// array to load products
+let productsArray = [];
 
-    let question = prompt("DinDong DinDong What number am I?");
+// class for create news products 
+class Product {
+    constructor(name, quiantityStarting, quantitySold, quantitySupplied) {
+        this.name = name;
+        this.quiantityStarting = quiantityStarting;
+        this.quantitySold = quantitySold;
+        this.quantitySupplied = quantitySupplied;
+        this.finalStock = 0;
+    }
+}
 
-    if (question !== randomNumber) {
-        console.log("Wrong! try again");
-        question = prompt("A last chance");
-    } else {
-        console.log("Yess! U won! the right number is" + randomNumber);
-    } }
+// Final stock calculator 
 
-guessWhich();
-
-
-
+calculateEndingStock() {
+    this.finalStock = this.quiantityStarting + this.quantitySupplied - this.quantitySold;
+  } ;

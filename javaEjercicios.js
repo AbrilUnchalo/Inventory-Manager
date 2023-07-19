@@ -1,61 +1,62 @@
 // array to load products
 let productsArray = [];
 
-// class for create news products (in the form of an object)
-class product {
-    constructor(name, quiantityStarting, quantitySold, quantitySupplied) {
+// class for creating new products (in the form of an object)
+class Product {
+    constructor(name, quantityStarting, quantitySold, quantitySupplied) {
         this.name = name;
-        this.quiantityStarting = quiantityStarting;
+        this.quantityStarting = quantityStarting;
         this.quantitySold = quantitySold;
         this.quantitySupplied = quantitySupplied;
         this.finalStock = 0;
     }
+
     // Final stock calculator 
     calculateEndingStock() {
-        this.finalStock = this.quiantityStarting + this.quantitySupplied - this.quantitySold;
+        this.finalStock = this.quantityStarting + this.quantitySupplied - this.quantitySold;
     }
     
     showResult() {
-        console.log("Initial stock of " + this.name + ": " + this.quiantityStarting);
+        console.log("Initial stock of " + this.name + ": " + this.quantityStarting);
         console.log("Units sold: " + this.quantitySold);
         console.log("Replenished units of " + this.name + ": " + this.quantitySupplied);
         console.log("Total stock of " + this.name + ": " + this.finalStock);
     }
 }
 
-//Function to add a product
-function addProduct () {
-   let name = prompt("Please, enter the product name:");
-   let quiantityStarting = prompt("Initial amount of product:");
-   let quantitySold = prompt("Number of units sold: ");
-   let quantitySupplied = prompt("Number of resupplied units:");
-};
+// Function to add a product
+function addProduct() {
+    let name = prompt("Please, enter the product name:");
+    let quantityStarting = prompt("Initial amount of product:");
+    let quantitySold = prompt("Number of units sold: ");
+    let quantitySupplied = prompt("Number of resupplied units:");
+    
+    let newProduct = new Product(name, quantityStarting, quantitySold, quantitySupplied);
+    productsArray.push(newProduct);
+}
 
-//This causes a new object to be created from the data collected at the prompt and then pushed to the empty "products Array"
-let createNewProducts = new product(name, quiantityStarting, quantitySold, quantitySupplied);
-productsArray.push(createNewProducts);
-
-//logic and main function of the inventory manager
+// Logic and main function of the inventory manager
 function inventoryManager() {
-    //add more products
-    let addMoreproducts = true; 
-    while(addMoreproducts) { 
-        //as long as "addmoreproducts" is true, it will run the add products message, if the option is not yes, the loop stops running
-        addMoreproducts();
-        let opcion = prompt("Do you want add other product? (yes/no)");
-        if (opcion !== "yes") {
-            addMoreproducts = false;
+    // Add more products
+    let addMoreProducts = true;
+    while (addMoreProducts) {
+        addProduct();
+        let option = prompt("Do you want to add another product? (yes/no)");
+        if (option.toLowerCase() !== "yes") {
+            addMoreProducts = false;
         }
     }
-    //processes the products, looping through each of them and returning the stock and the result
-    for (let i = 0; i < product.length; i++) {
-        let product = productsArray[i];
-        product.calculateEndingStock();
-        product.showResult();
+
+    // Process the products, looping through each of them and calculating the stock and showing the results
+    for (let i = 0; i < productsArray.length; i++) {
+        let currentProduct = productsArray[i];
+        currentProduct.calculateEndingStock();
+        currentProduct.showResult();
     }
-};
+}
 
 inventoryManager();
+
 
 
 

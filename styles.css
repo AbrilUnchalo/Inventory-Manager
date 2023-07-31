@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap');
 body {
-    background-image: url(./img/pxfuel.jpg);
+    background-image: url(./img/formas-papel-psicodelico-espacio-copia.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.container {
+.myContainer {
     background: rgba(241, 239, 239, 0.26);
     border-radius: 10px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -20,4 +20,44 @@ body {
 .title {
     font-family: 'Bungee Shade', cursive;
     font-size: 3rem;
+}
+
+.table {
+    font-size: 2rem; 
+}
+
+
+
+#corner-button {
+    position: fixed;
+    top: 15%; /* Ajusta la distancia superior */
+    right: 12%; /* Ajusta la distancia derecha */
+    padding: 15px;
+    background: rgba(241, 239, 239, 0.26);
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.7px);
+    -webkit-backdrop-filter: blur(5.7px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: white;
+    cursor: pointer;
+    z-index: 9999;
+    font-size: 2rem;
+}
+
+.deleteButton {
+    position: fixed;
+    top: 15%; /* Ajusta la distancia superior */
+    right: 25%; /* Ajusta la distancia derecha */
+    padding: 15px;
+    background: rgba(241, 239, 239, 0.26);
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.7px);
+    -webkit-backdrop-filter: blur(5.7px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: white;
+    cursor: pointer;
+    z-index: 9999;
+    font-size: 2rem;
 }

@@ -18,7 +18,13 @@ document.getElementById("addProduct").addEventListener ("click", () => {
     const nameInput = document.getElementById("productName").value;
     const initialStockInput = parseInt(document.getElementById("initialStock").value);
     console.log(nameInput, initialStockInput);
+
+    return {productName, initialStock};
+
+    addProduct.push(productsArray);
 }) 
+
+// 
 
 
  function newProduct (name, quantityStarting) {
@@ -42,7 +48,7 @@ document.getElementById("addProduct").addEventListener ("click", () => {
  stockTableBody.appendChild(newRow);
 
  // saves products with json 
- const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
+ const storedProducts = JSON.parse(localStorage.getItem('Product')) || [];
  storedProducts.push({ name: nameInput, initialStockInput: initialStockInput, quantityUsed: 0, quantitySupplieds: 0 });
  localStorage.setItem('products', JSON.stringify(storedProducts));
     }

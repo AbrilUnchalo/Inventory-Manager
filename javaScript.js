@@ -1,6 +1,9 @@
 // array to load products
 let productsArray = [];
 
+// saves products with json
+const storedProducts = JSON.parse(localStorage.getItem("Product")) || [];
+
 // class for creating new products (in the form of an object)
 class Product {
     constructor(name, quantityStarting, quantityUsed, quantitySupplied) {
@@ -19,6 +22,8 @@ document.getElementById("saveProduct").addEventListener ("submit", (e) => {
     const nameInput = document.getElementById("productName").value;
     const initialStockInput = parseInt(document.getElementById("initialStock").value);
     console.log(nameInput, initialStockInput);
+    storedProducts.push({ name: nameInput, initialStockInput: initialStockInput, quantityUsed: 0, quantitySupplieds: 0 });
+	console.log(storedProducts);
 
 }) 
 

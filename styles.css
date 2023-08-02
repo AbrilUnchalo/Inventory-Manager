@@ -45,6 +45,11 @@ body {
     font-size: 2rem;
 }
 
+button a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .deleteButton {
     position: fixed;
     top: 15%; /* Ajusta la distancia superior */
@@ -60,4 +65,15 @@ body {
     cursor: pointer;
     z-index: 9999;
     font-size: 2rem;
+}
+
+.stockInput {
+    width: 20%;
+    border: 0px;
+    text-align: center;
+    background: rgba(241, 239, 239, 0.26);
+}
+
+.form {
+    font-size: 2rem;  
 }

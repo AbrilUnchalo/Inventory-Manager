@@ -3,30 +3,27 @@ let productsArray = [];
 
 // class for creating new products (in the form of an object)
 class Product {
-    constructor(name, quantityStarting, quantitySold, quantitySupplied) {
+    constructor(name, quantityStarting, quantityUsed, quantitySupplied) {
         this.name = name;
         this.quantityStarting = parseInt(quantityStarting);
         this.quantityUsed = parseInt(quantityUsed);
         this.quantitySupplied = parseInt(quantitySupplied);
-        this.finalStock = parseInt(quantityStarting + quantitySupplied - quantityUsed);
+        this.finalStock = this.quantityStarting + this.quantitySupplied - this.quantityUsed;
     }
 }
     
 
 // function for capturing new product data
-document.getElementById("addProduct").addEventListener ("click", () => {
+document.getElementById("saveProduct").addEventListener ("click", () => {
     const nameInput = document.getElementById("productName").value;
     const initialStockInput = parseInt(document.getElementById("initialStock").value);
     console.log(nameInput, initialStockInput);
 
-    return {productName, initialStock};
-
-    addProduct.push(productsArray);
 }) 
 
-// 
 
 
+// function for add products to the table
  function newProduct (name, quantityStarting) {
     const newRow = document.createElement("tr");
 
@@ -41,8 +38,13 @@ document.getElementById("addProduct").addEventListener ("click", () => {
   usedCell.textContent = 0;
   suppliedCell.textContent = 0;
   finalStockCell.textContent = initialStock;
- 
 
+  // Append cells to the row
+  newRow.appendChild(productNameCell);
+  newRow.appendChild(usedCell);
+  newRow.appendChild(suppliedCell);
+  newRow.appendChild(finalStockCell);
+ 
  // Add the row to the table
  const stockTableBody = document.getElementById('stockTableBody');
  stockTableBody.appendChild(newRow);
@@ -53,7 +55,7 @@ document.getElementById("addProduct").addEventListener ("click", () => {
  localStorage.setItem('products', JSON.stringify(storedProducts));
     }
 
-    productsArray.push(newProduct); //cambiar y hacer que para crear el nuevo producto solo haya que ingresar el nombre, el stock inicial y la descripcion 
+
 
 
 

@@ -14,13 +14,13 @@ class Product {
     
 
 // function for capturing new product data
-document.getElementById("saveProduct").addEventListener ("click", () => {
+document.getElementById("saveProduct").addEventListener ("submit", (e) => {
+    e.preventDefault();
     const nameInput = document.getElementById("productName").value;
     const initialStockInput = parseInt(document.getElementById("initialStock").value);
     console.log(nameInput, initialStockInput);
 
 }) 
-
 
 
 // function for add products to the table

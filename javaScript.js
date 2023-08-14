@@ -56,7 +56,21 @@ document.getElementById("saveProduct").addEventListener("submit", (e) => {
 
 
 	localStorage.setItem("Product", JSON.stringify(storedProducts));
+
+	//use library toastify for 
+	Toastify({
+        text: "Product added successfully!",
+        duration: 3000, // 3 seconds
+        gravity: "center", // Center the notification vertically and horizontally
+        position: "center", // Position the notification at the center
+        backgroundColor: "pink",
+        stopOnFocus: true, // Stop auto-close when the user focuses on the notification
+        style: {
+            fontSize: "4rem" // Increase the font size for a larger notification
+        }
+    }).showToast();
 });
+
 
 const showTable = () => {
 	stockTableBody.innerHTML = "";
@@ -65,6 +79,16 @@ const showTable = () => {
 	});
 };
 
+function deleteProduct(id) {
+	const productIndex = storedProducts.findIndex(product => product.id === id);
+	if (productIndex !== -1) {
+		storedProducts.splice(productIndex, 1);
+		showTable();
+		saveProductsToLocalStorage();
+	}
+}
+
+
 // function for add products to the table
 function newProduct(product) {
 	const newRow = document.createElement("tr");
@@ -72,6 +96,7 @@ function newProduct(product) {
 	// Create cells for each product detail
 	const productId = document.createElement("td");
 	const productNameCell = document.createElement("td");
+	const productInitialStock = document.createElement("td");
 	const usedCell = document.createElement("td");
 	const suppliedCell = document.createElement("td");
 	const finalStockCell = document.createElement("td");
@@ -116,8 +141,34 @@ function newProduct(product) {
 		finalStockCell.textContent = product.finalStock;
 		
 	  });
+
+	  const deleteButton = document.createElement("button");
+	deleteButton.textContent = "Delete";
+	deleteButton.className = "deleteProductButton";
+
+	deleteButton.addEventListener("click", () => {
+		deleteProduct(product.id);
+	});
+
+	newRow.appendChild(deleteButton);
 	}
 
 
 
 showTable();
+
+//buttons
+
+//fuction for delete all products of the table
+
+/*fuction deleteAllProducts() {
+	storedProducts.length = 0; 
+	localStorage.removeItem("Product");
+	showTable()
+}
+
+//action
+
+const deleteAllButton = document.getElementById("deleteBtn");
+deleteAllButton.addEventListener("click", deleteAllProducts);*/
+

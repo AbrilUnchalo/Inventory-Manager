@@ -29,9 +29,8 @@ body {
 
 
 #corner-button {
-    position: fixed;
-    top: 15%; /* Ajusta la distancia superior */
-    right: 12%; /* Ajusta la distancia derecha */
+    top: 15%; 
+    right: 12%; 
     padding: 15px;
     background: rgba(241, 239, 239, 0.26);
     border-radius: 10px;
@@ -51,9 +50,8 @@ button a {
 }
 
 .deleteButton {
-    position: fixed;
-    top: 15%; /* Ajusta la distancia superior */
-    right: 25%; /* Ajusta la distancia derecha */
+    top: 15%; 
+    right: 25%; 
     padding: 15px;
     background: rgba(241, 239, 239, 0.26);
     border-radius: 10px;
@@ -77,3 +75,62 @@ button a {
 .form {
     font-size: 2rem;  
 }
+
+@media screen and (min-width: 1200px) {
+    .table {
+      font-size: 1.5rem; /* Reducir el tamaño de fuente de la tabla */
+    }
+  
+    .myContainer {
+      margin: 8%; /* Reducir el margen en pantallas grandes */
+      padding: 3%; /* Reducir el padding en pantallas grandes */
+    }
+  
+  }
+  
+  .deleteButton,
+#corner-button {
+  position: fixed;
+  padding: 15px;
+  background: rgba(241, 239, 239, 0.26);
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.7px);
+  -webkit-backdrop-filter: blur(5.7px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: white;
+  cursor: pointer;
+  z-index: 9999;
+  font-size: 2rem;
+  text-align: center;
+}
+
+/* Otros estilos */
+.myContainer {
+  background: rgba(241, 239, 239, 0.26);
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.7px);
+  -webkit-backdrop-filter: blur(5.7px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin: 12%;
+  padding: 5%;
+  text-align: center;
+}
+
+#corner-button {
+  top: 15%;
+}
+
+.deleteButton {
+  top: 15%;
+}
+  
+  .form label,
+  .form input {
+      margin-bottom: 10px; /* Añade espacio entre etiquetas e inputs */
+  }
+  
+  .form input[type="submit"] {
+      margin-top: 10px; /* Añade margen superior al botón de submit */
+  }

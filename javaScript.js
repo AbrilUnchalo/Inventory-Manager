@@ -3,23 +3,7 @@ let productsArray = [];
 // Add the row to the table
 const stockTableBody = document.getElementById("stockTableBody");
 // saves products with json
-const storedProducts = JSON.parse(localStorage.getItem("Product")) || [
-	{
-		id: 1,
-		name: "banana",
-		quantityStarting: 0, 
-		quantityUsed: 0, 
-		quantitySupplieds: 0
-	},
-
-	{
-		id: 2,
-		name: "orange",
-		quantityStarting: 0, 
-		quantityUsed: 0, 
-		quantitySupplieds: 0
-	},
-];
+const storedProducts = JSON.parse(localStorage.getItem("Product"));
 
 // class for creating new products (in the form of an object)
 class Product {
@@ -32,6 +16,9 @@ class Product {
 		this.finalStock = this.quantityStarting + this.quantitySupplied - this.quantityUsed;
 	}
 }
+
+
+  
 
 let lastUsedId = storedProducts.reduce((maxId, product) => Math.max(maxId, product.id), 0);
 
@@ -46,12 +33,13 @@ document.getElementById("saveProduct").addEventListener("submit", (e) => {
 
 	storedProducts.push({
 		id: lastUsedId,
-		 name: nameInput,
-		  quantityStarting: initialStockInput,
-		   quantityUsed: 0,
-		    quantitySupplieds: 0 });
+		name: nameInput,
+		quantityStarting: initialStockInput,
+		quantityUsed: 0,
+		quantitySupplieds: 0 
+	});
 
-	console.log(storedProducts);
+	
 	showTable();
 
 
@@ -104,22 +92,24 @@ function newProduct(product) {
     //Inputs for calculate final stock
     const usedInput = document.createElement("input");
     usedInput.type = "number";
-	usedInput.value = product.quantityUsed; // Set initial value
+	usedInput.value = product.quantityUsed || 0; // Set initial value
     usedCell.appendChild(usedInput);
     
 	const suppliedInput = document.createElement("input");
     suppliedInput.type = "number";
-	suppliedInput.value = product.quantitySupplied;
+	suppliedInput.value = product.quantitySupplied || 0;
   	suppliedCell.appendChild(suppliedInput);
 
 	// Set the cell values
 	productId.textContent = product.id;
 	productNameCell.textContent = product.name;
-	finalStockCell.textContent = product.finalStock;
+	productInitialStock.textContent = product.quantityStarting;
+	finalStockCell.textContent = product.finalStock || 0;
 
 	// Append cells to the row
 	newRow.appendChild(productId);
 	newRow.appendChild(productNameCell);
+	newRow.appendChild(productInitialStock)
 	newRow.appendChild(usedCell);
 	newRow.appendChild(suppliedCell);
 	newRow.appendChild(finalStockCell);
@@ -128,21 +118,21 @@ function newProduct(product) {
 	stockTableBody.appendChild(newRow);
 
 	// event listeners to inputs to calculate and update final stock
-	  usedInput.addEventListener("input", () => {
+	usedInput.addEventListener("input", () => {
 		product.quantityUsed = parseInt(usedInput.value);
 		product.finalStock = product.quantityStarting + product.quantitySupplied - product.quantityUsed;
 		finalStockCell.textContent = product.finalStock;
 		
-	  });
+	});
 	
-	  suppliedInput.addEventListener("input", () => {
+	suppliedInput.addEventListener("input", () => {
 		product.quantitySupplied = parseInt(suppliedInput.value);
 		product.finalStock = product.quantityStarting + product.quantitySupplied - product.quantityUsed;
 		finalStockCell.textContent = product.finalStock;
 		
-	  });
+	});
 
-	  const deleteButton = document.createElement("button");
+	const deleteButton = document.createElement("button");
 	deleteButton.textContent = "Delete";
 	deleteButton.className = "deleteProductButton";
 
@@ -151,11 +141,26 @@ function newProduct(product) {
 	});
 
 	newRow.appendChild(deleteButton);
-	}
-
-
-
+}
+	
 showTable();
+
+// Load initial products if localStorage is empty
+if (!localStorage.getItem("Product")) {
+	fetch("initialProducts.json")
+	  .then(response => response.json())
+	  .then(initialProducts => {
+		storedProducts.push(...initialProducts);
+		localStorage.setItem("Product", JSON.stringify(storedProducts));
+		showTable();
+	  })
+	  .catch(error => {
+		console.error("Error loading initial products:", error);
+	  });
+  } else {
+	showTable();
+  }
+
 
 //buttons
 

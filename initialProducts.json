@@ -1,0 +1,17 @@
+[
+    {
+      "id": 1,
+      "name": "banana",
+      "quantityStarting": 0,
+      "quantityUsed": 0,
+      "quantitySupplieds": 0
+    },
+    {
+      "id": 2,
+      "name": "orange",
+      "quantityStarting": 0,
+      "quantityUsed": 0,
+      "quantitySupplieds": 0
+    }
+  ]
+  

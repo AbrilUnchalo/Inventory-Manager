@@ -3,7 +3,7 @@ let productsArray = [];
 // Add the row to the table
 const stockTableBody = document.getElementById("stockTableBody");
 // saves products with json
-const storedProducts = JSON.parse(localStorage.getItem("Product"));
+const storedProducts = JSON.parse(localStorage.getItem("Product")) || [];
 
 // class for creating new products (in the form of an object)
 class Product {
@@ -72,7 +72,6 @@ function deleteProduct(id) {
 	if (productIndex !== -1) {
 		storedProducts.splice(productIndex, 1);
 		showTable();
-		saveProductsToLocalStorage();
 	}
 }
 

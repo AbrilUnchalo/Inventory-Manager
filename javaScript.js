@@ -161,7 +161,7 @@ showTable();
 
 //fuction for delete all products of the table
 
-/*fuction deleteAllProducts() {
+function deleteAllProducts() {
 	storedProducts.length = 0; 
 	localStorage.removeItem("Product");
 	showTable()
@@ -170,5 +170,5 @@ showTable();
 //action
 
 const deleteAllButton = document.getElementById("deleteBtn");
-deleteAllButton.addEventListener("click", deleteAllProducts);*/
+deleteAllButton.addEventListener("click", deleteAllProducts);
 
